@@ -1,17 +1,45 @@
+"use client";
 import Link from "next/link";
 import image from "./../../../public/next.svg";
 import Image from "next/image";
+import { useState } from "react";
+import Autocomplete from "react-select";
+
 const Search = () => {
+  const options = [
+    { value: "a", label: "Bandra" },
+    { value: "b", label: "Khar" },
+    { value: "c", label: "Thane" },
+    { value: "d", label: "Goregaon" },
+    { value: "e", label: "Andheri" },
+
+  ];
+
   const search_func = async (formData) => {
-    "use server";
-    await connectToDatabase();
     const search = formData.get("search");
     console.log(search);
   };
   return (
     <section className="w-full">
-      <form action={search_func}>
-        <input type="text" />
+      <form action={search_func} className="w-full flex justify-center">
+        <div className="relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="absolute z-50 top-2.5 right-12 h-4 w-4 text-gray-500"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <Autocomplete options={options} className="text-sm ring-offset-background w-[600px]"/>
+        </div>
       </form>
       <main className="container mx-auto px-4 md:px-6 py-8">
         <section className="mb-8">
