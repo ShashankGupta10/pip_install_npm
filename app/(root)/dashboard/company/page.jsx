@@ -3,6 +3,10 @@ import one from "./../../../../public/1.png";
 import chart1 from "./../../../../public/chart1.svg";
 import chart2 from "./../../../../public/chart2.svg";
 import chart3 from "./../../../../public/chart3.svg";
+import mr from "./../../../../public/mr.svg";
+import cf from "./../../../../public/cf.svg";
+import ed from "./../../../../public/ed.svg";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -43,10 +47,9 @@ const Dashboard = () => {
           </div>
           <div className="flex-1 overflow-auto py-2 ">
             <nav className="grid items-start px-4 text-sm font-medium">
-              <a
-                className="flex items-center gap-6 text-2xl rounded-lg px-3 py-2  text-gray-900  transition-all hover:text-gray-900"
-                href="#"
-                onClick={() => router.push("/dashboard")}
+              <Link
+                className="flex items-center gap-6 rounded-lg px-3 py-2  text-gray-900  transition-all hover:text-gray-900"
+                href={"/dashboard/company"}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -58,36 +61,96 @@ const Dashboard = () => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="h-6 w-6"
+                  className="h-4 w-4"
                 >
                   <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                   <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
                 Home
-              </a>
+              </Link>
 
-              <a
-                className="flex items-center gap-6 text-2xl rounded-lg px-3 py-2  text-gray-900  transition-all hover:text-gray-900"
-                href="#"
-                onClick={() => router.push("/video")}
+              <Link
+                className="flex items-center gap-5 rounded-lg px-3 py-2  text-gray-900  transition-all hover:text-gray-900"
+                href={"/search"}
               >
                 <svg
-                  className="w-6 h-6 text-gray-800 "
+                  className="w-5 h-5 text-gray-800 dark:text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  viewBox="0 0 20 14"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeWidth="2"
+                    d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+                Search for Causes
+              </Link>
+
+              <Link
+                className="flex items-center gap-5 rounded-lg px-3  py-2  text-gray-900  transition-all hover:text-gray-900"
+                href={"/chat/company"}
+              >
+                <svg
+                  className=" w-5 h-5 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
                 >
                   <path
                     stroke="currentColor"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M12 1H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Zm7 11-6-2V4l6-2v10Z"
+                    d="M9 17h6l3 3v-3h2V9h-2M4 4h11v8H9l-3 3v-3H4V4Z"
                   />
                 </svg>
-                Video
-              </a>
+                Chat
+              </Link>
+              <Link
+                className="flex items-center gap-5 rounded-lg px-2 py-2  text-gray-900  transition-all hover:text-gray-900"
+                href={"/company/profile"}
+              >
+                <svg
+                  className="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    d="M7 17v1c0 .6.4 1 1 1h8c.6 0 1-.4 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  />
+                </svg>
+                Profile
+              </Link>
+              <Link
+                className="flex items-center gap-5 rounded-lg px-3 py-2  text-gray-900  transition-all hover:text-gray-900"
+                href={"/dashboard/company"}
+              >
+                <svg
+                  className="w-5 h-5 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 4.5V19c0 .6.4 1 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.2M20 9v3.2"
+                  />
+                </svg>
+                Impact
+              </Link>
             </nav>
           </div>
         </div>
@@ -111,7 +174,7 @@ const Dashboard = () => {
               <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path>
               <path d="M12 3v6"></path>
             </svg>
-            roun
+
             <span className="sr-only">Home</span>
           </a>
           <div className="w-full flex-1">
@@ -231,7 +294,9 @@ const Dashboard = () => {
                 data-v0-t="card"
               >
                 <div className="flex flex-col space-y-1.5 p-6">
-                  <p className="text-sm text-muted-foreground">Total Mentees</p>
+                  <p className="text-sm text-muted-foreground">
+                    Total Donations
+                  </p>
                   <h3 className="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">
                     120
                   </h3>
@@ -255,7 +320,7 @@ const Dashboard = () => {
                 data-v0-t="card"
               >
                 <div className="flex flex-col space-y-1.5 p-6">
-                  <p className="text-sm text-muted-foreground">Sessions</p>
+                  <p className="text-sm text-muted-foreground">Visits</p>
                   <h3 className="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">
                     345
                   </h3>
@@ -280,7 +345,7 @@ const Dashboard = () => {
               >
                 <div className="flex flex-col space-y-1.5 p-6">
                   <p className="text-sm text-muted-foreground">
-                    Returning Mentees
+                    Turnover % Donation
                   </p>
                   <h3 className="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">
                     33.5%
@@ -307,9 +372,7 @@ const Dashboard = () => {
                 data-v0-t="card"
               >
                 <div className="flex flex-col space-y-1.5 p-6">
-                  <p className="text-sm text-muted-foreground">
-                    Mentee Details
-                  </p>
+                  <p className="text-sm text-muted-foreground">NGO Details</p>
                 </div>
                 <div className="p-6">
                   <table className="w-full text-left border-collapse">
@@ -325,10 +388,10 @@ const Dashboard = () => {
                           Email
                         </th>
                         <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                          Sessions Attended
+                          Times Donated
                         </th>
                         <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
-                          Last Session
+                          Last Donation
                         </th>
                       </tr>
                     </thead>
@@ -336,7 +399,7 @@ const Dashboard = () => {
                       <tr className="hover:bg-grey-lighter">
                         <td className="py-4 px-6 border-b border-grey-light">
                           <Image
-                            src={one}
+                            src={cf}
                             width="50"
                             height="50"
                             className="rounded-full"
@@ -348,22 +411,22 @@ const Dashboard = () => {
                           />
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          John Doe
+                          ConnectFor
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          john@example.com
+                          connectfor@example.com
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          10
+                          40
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          June 30, 2023
+                          September 30, 2023
                         </td>
                       </tr>
                       <tr className="hover:bg-grey-lighter">
                         <td className="py-4 px-6 border-b border-grey-light">
                           <Image
-                            src={one}
+                            src={ed}
                             width="50"
                             height="50"
                             className="rounded-full"
@@ -375,22 +438,22 @@ const Dashboard = () => {
                           />
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          Jane Doe
+                          Educate Us
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          jane@example.com
+                          educateus@example.com
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          8
+                          60
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          June 28, 2023
+                          December 28, 2023
                         </td>
                       </tr>
                       <tr className="hover:bg-grey-lighter">
                         <td className="py-4 px-6 border-b border-grey-light">
                           <Image
-                            src={one}
+                            src={mr}
                             width="50"
                             height="50"
                             className="rounded-full"
@@ -402,13 +465,13 @@ const Dashboard = () => {
                           />
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          Steve Smith
+                          Muskurate Raho
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          steve@example.com
+                          muskarateraho@example.com
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          12
+                          20
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
                           June 30, 2023

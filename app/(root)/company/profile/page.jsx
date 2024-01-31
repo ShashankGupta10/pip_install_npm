@@ -54,7 +54,7 @@ const MentorProfile = () => {
       <div
         className="mb-4"
         onClick={() => {
-          router.push("/dashboard");
+          router.push("/dashboard/company");
         }}
       >
         <IoMdArrowBack className="w-6 h-6" />

@@ -1,0 +1,8 @@
+langchain
+python-dotenv
+cohere
+flask
+flask_cors
+pypdf2
+black
+faiss-cpu
