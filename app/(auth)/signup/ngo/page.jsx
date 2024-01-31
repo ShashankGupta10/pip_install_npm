@@ -1,17 +1,17 @@
 import Link from "next/link";
 import connectToDatabase from "@/lib/connect";
-import User from "@/db/user.schema";
+import NGO from "@/db/ngo.schema";
 
 const Signup = async () => {
-  const user_signup = async (formData) => {
+  const ngo_signup = async (formData) => {
     "use server";
     await connectToDatabase();
     const name = formData.get("name");
     const email = formData.get("email");
     const password = formData.get("password");
     console.log(name, email, password);
-    await User.create({ name: name, email: email, password: password });
-    return { message: "User created successfully" };
+    await NGO.create({ name: name, email: email, password: password });
+    return { message: "NGO created successfully" };
   };
   return (
     <main className="w-full flex">
@@ -85,7 +85,7 @@ const Signup = async () => {
               </p>
             </div>
           </div>
-          <form className="space-y-5" action={user_signup}>
+          <form className="space-y-5" action={ngo_signup}>
             <div>
               <label className="font-medium">Name</label>
               <input

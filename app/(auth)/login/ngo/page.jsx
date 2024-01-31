@@ -1,15 +1,18 @@
 import Link from "next/link";
 import connectToDatabase from "@/lib/connect";
-import User from "@/db/user.schema";
+import NGO from "@/db/ngo.schema";
+
 import { redirect } from "next/navigation";
 const Login = () => {
   const serverAction = async (formData) => {
     "use server";
     await connectToDatabase();
-    const { email, password } = formData;
-    const user = await User.findOne({ email: email });
-    if (user && user.password === password) {
-      redirect("/signup");
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const ngo = await NGO.findOne({ email: email });
+    console.log(ngo)
+    if (ngo && ngo?.password === password) {
+      redirect("/dashboard");
     } else {
       console.log("Invalid password");
     }
