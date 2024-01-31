@@ -1,11 +1,9 @@
 import Link from "next/link";
 import connectToDatabase from "@/lib/connect";
 import Company from "@/db/company.schema";
-import { redirect } from 'next/navigation'
 // import part1 from "./part1";
 
 const page = async () => {
-
   const company_signup = async (formData) => {
     "use server";
     await connectToDatabase();
@@ -13,11 +11,8 @@ const page = async () => {
     const email = formData.get("email");
     const password = formData.get("password");
     console.log(name, email, password);
-    
     await Company.create({ name: name, email: email, password: password });
-    redirect('/signup/company/2')
-    // return { message: "Company created successfully" };
-
+    return { message: "Company created successfully" };
   };
   return (
     <main className="w-full flex">
@@ -78,14 +73,14 @@ const page = async () => {
             />
             <div className="mt-5 space-y-2">
               <div className="mb-16 h-4 rounded-lg bg-gray-200 ">
-                <div className="h-full rounded-lg w-3/6"></div>
+                <div className="h-full bg-gray-800 rounded-lg w-3/6"></div>
                 <div className="flex justify-between">
                   <p className="text-gray-800">0%</p>
                   <p className="text-gray-800">Complete</p>
                 </div>
               </div>
               <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
-                Sign up as Company
+                Fill Details
               </h3>
               <p className="">
                 Already have an account?{" "}
@@ -100,7 +95,7 @@ const page = async () => {
           </div>
           <form className="space-y-5" action={company_signup}>
             <div>
-              <label className="font-medium">Name</label>
+              <label className="font-medium">Areas of In</label>
               <input
                 type="text"
                 required
@@ -126,7 +121,7 @@ const page = async () => {
                 name="password"
               />
             </div>
-            <button  className="w-full px-4 py-2 text-white font-medium bg-black hover:bg-gray-600 active:bg-gray-700 rounded-lg duration-150">
+            <button className="w-full px-4 py-2 text-white font-medium bg-black hover:bg-gray-600 active:bg-gray-700 rounded-lg duration-150">
               Next
             </button>
           </form>
