@@ -1,18 +1,33 @@
 import Link from "next/link";
 import connectToDatabase from "@/lib/connect";
 import Company from "@/db/company.schema";
+import { redirect } from "next/navigation";
 // import part1 from "./part1";
 
 const page = async () => {
+  const back = async () => {
+    "use server";
+    redirect("/signup/company");
+  };
+
   const company_signup = async (formData) => {
     "use server";
     await connectToDatabase();
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const password = formData.get("password");
-    console.log(name, email, password);
-    await Company.create({ name: name, email: email, password: password });
+    const areasofinterest = formData.get("areasOfInterest");
+    const turnover = formData.get("turnover");
+    const mission = formData.get("mission");
+    console.log(areasofinterest, turnover, mission);
+
+    await Company.create({
+      areasOfInterest: areasofinterest,
+      turnover: turnover,
+      mission: mission,
+    });
+
     return { message: "Company created successfully" };
+    // console.log(name, email, password);
+    // await Company.create({ name: name, email: email, password: password });
+    // return { message: "Company created successfully" };
   };
   return (
     <main className="w-full flex">
@@ -72,17 +87,36 @@ const page = async () => {
               className="lg:hidden"
             />
             <div className="mt-5 space-y-2">
-              <div className="mb-16 h-4 rounded-lg bg-gray-200 ">
+              <div className="mb-10 h-4 rounded-lg bg-gray-200 ">
                 <div className="h-full bg-gray-800 rounded-lg w-3/6"></div>
                 <div className="flex justify-between">
-                  <p className="text-gray-800">0%</p>
+                  <p className="text-gray-800">50%</p>
                   <p className="text-gray-800">Complete</p>
                 </div>
               </div>
+              <form action={back}>
+                <button>
+                  <svg
+                    class="w-6 h-6 text-gray-800 dark:text-white"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 12h14M5 12l4-4m-4 4 4 4"
+                    />
+                  </svg>
+                </button>
+              </form>
               <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
                 Fill Details
               </h3>
-              <p className="">
+              {/* <p className="">
                 Already have an account?{" "}
                 <Link
                   href={"/login"}
@@ -90,39 +124,59 @@ const page = async () => {
                 >
                   Log in
                 </Link>
-              </p>
+              </p> */}
             </div>
           </div>
+
           <form className="space-y-5" action={company_signup}>
             <div>
-              <label className="font-medium">Areas of In</label>
+              <label className="font-medium">Areas of Interest</label>
+              <select
+                required
+                name="areasOfInterest"
+                // value={areasOfInterest}
+                // onChange={(e) => setAreasOfInterest(e.target.value)}
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-700 shadow-sm rounded-lg"
+              >
+                <option value="" disabled>
+                  Select
+                </option>
+                <option value="Technology">Technology</option>
+                <option value="Finance">Finance</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+              </select>
+            </div>
+            <div>
+              <label className="font-medium">Turnover (in Crores)</label>
+              <select
+                name="turnover"
+                required
+                // value={turnover}
+                // onChange={(e) => setTurnover(e.target.value)}
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-700 shadow-sm rounded-lg"
+              >
+                <option value="" disabled>
+                  Select
+                </option>
+                <option value="5-10 Cr">5-10 Cr</option>
+                <option value="1 - 5">10 - 100 Cr</option>
+                <option value="More than 100 Cr">More than 100Cr</option>
+              </select>
+            </div>
+            <div>
+              <label className="font-medium">Mission</label>
               <input
                 type="text"
-                required
+                name="mission"
+                // value={mission}
+                // onChange={(e) => setMission(e.target.value)}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-700 shadow-sm rounded-lg"
-                name="name"
-              />
-            </div>
-            <div>
-              <label className="font-medium">Email</label>
-              <input
-                type="email"
-                required
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-700 shadow-sm rounded-lg"
-                name="email"
-              />
-            </div>
-            <div>
-              <label className="font-medium">Password</label>
-              <input
-                type="password"
-                required
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-700 shadow-sm rounded-lg"
-                name="password"
+                placeholder="Enter your mission"
               />
             </div>
             <button className="w-full px-4 py-2 text-white font-medium bg-black hover:bg-gray-600 active:bg-gray-700 rounded-lg duration-150">
-              Next
+              Submit
             </button>
           </form>
         </div>

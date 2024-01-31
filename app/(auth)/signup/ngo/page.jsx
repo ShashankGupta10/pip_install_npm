@@ -77,7 +77,7 @@ const Signup = async () => {
               <p className="">
                 Already have an account?{" "}
                 <Link
-                  href={"/login"}
+                  href={"/login/ngo"}
                   className="font-semibold hover: text-gray-700"
                 >
                   Log in

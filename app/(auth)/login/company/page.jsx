@@ -80,7 +80,7 @@ const Login = () => {
               <p className="">
                 Dont have an account?{" "}
                 <Link
-                  href={"/signup"}
+                  href={"/signup/company"}
                   className="font-semibold hover:text-gray-700"
                 >
                   Sign Up

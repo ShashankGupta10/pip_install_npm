@@ -15,6 +15,7 @@ const page = async () => {
     console.log(name, email, password);
     
     await Company.create({ name: name, email: email, password: password });
+    
     redirect('/signup/company/2')
     // return { message: "Company created successfully" };
 
@@ -90,7 +91,7 @@ const page = async () => {
               <p className="">
                 Already have an account?{" "}
                 <Link
-                  href={"/login"}
+                  href={"/login/company"}
                   className="font-semibold hover: text-gray-700"
                 >
                   Log in

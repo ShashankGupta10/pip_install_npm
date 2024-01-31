@@ -81,7 +81,7 @@ const Login = () => {
               <p className="">
                 Dont have an account?{" "}
                 <Link
-                  href={"/signup"}
+                  href={"/signup/ngo"}
                   className="font-semibold hover:text-gray-700"
                 >
                   Sign Up
