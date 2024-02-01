@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 export default function Funds() {
   const back = async () => {
     "use server";
-    redirect("/search");
+    redirect("/dashboard/company/search");
   };
   return (
     <main className="flex flex-col gap-8 p-8">
