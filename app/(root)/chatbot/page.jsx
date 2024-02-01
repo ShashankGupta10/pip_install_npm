@@ -7,7 +7,7 @@ const Chat = () => {
 
   const handleSendMessage = () => {
     if (userMessage.trim() === '') {
-      return; // Prevent sending empty messages
+      return;
     }
 
     setMessages([...messages, { type: 'user', text: userMessage }]);
@@ -15,10 +15,10 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    // Simulate an API call to fetch messages from the chatbot
+
     const fetchChatbotMessages = async () => {
       try {
-        const response = await fetch('YOUR_API_ENDPOINT');
+        const response = await fetch('http://127.0.0.1:5000/chat');
         const data = await response.json();
 
         // Update messages state with the chatbot messages
@@ -28,9 +28,7 @@ const Chat = () => {
       }
     };
 
-    // Call the fetch function when the component mounts
     fetchChatbotMessages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
   return (
     <>
