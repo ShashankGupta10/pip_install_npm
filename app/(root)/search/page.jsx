@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import image from "./../../../public/next.svg";
 import filter from "./../../../public/filter.svg";
 import Image from "next/image";
 import Autocomplete from "react-select";
@@ -22,6 +21,13 @@ const Search = () => {
     },
   ]);
   const [filterActive, setFilterActive] = useState(false);
+
+  const images = {
+    environmental: ["/environmental_1.jpg", "/environmental_2.jpeg", "/environmental_3.jpg"],
+    ethical: ["/ethical.jpg", "/ethical_2.webp", "/ethical_3.jpg"],
+    philanthropic: ["/philanthropy_1.jpg", "/philanthropy_2.jpg", "/philanthropy_3.webp"],
+    financial: ["/financial_1.webp", "/financial_2.webp", "/financial_3.jpg"]
+  }
 
   const [formData, setFormData] = useState({
     ethical: true,
@@ -117,7 +123,7 @@ const Search = () => {
           {formData.environmental?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Environmental</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.map((cause) => {
+              {data.map((cause, index) => {
                 if (cause.category == "environmental") {
                   return (
                     <div>
@@ -125,7 +131,7 @@ const Search = () => {
                         alt="Politics Story Image"
                         className="w-full h-64 object-cover object-center rounded-lg"
                         height="400"
-                        src={image}
+                        src={images.environmental[index]}
                         style={{
                           aspectRatio: "600/400",
                           objectFit: "cover",
@@ -159,7 +165,7 @@ const Search = () => {
           {formData.ethical?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Ethical</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.map((cause) => {
+              {data.map((cause, index) => {
                 if (cause.category == "ethical") {
                   return (
                     <div>
@@ -167,7 +173,7 @@ const Search = () => {
                         alt="Business Story Image"
                         className="w-full h-64 object-cover object-center rounded-lg"
                         height="400"
-                        src={image}
+                        src={images.ethical[index]}
                         style={{
                           aspectRatio: "600/400",
                           objectFit: "cover",
@@ -201,7 +207,7 @@ const Search = () => {
           {formData.philanthropic?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Philanthropic</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.map((cause) => {
+              {data.map((cause, index) => {
                 if (cause.category == "philanthropic") {
                   return (
                     <div>
@@ -209,7 +215,7 @@ const Search = () => {
                         alt="Tech Story Image"
                         className="w-full h-64 object-cover object-center rounded-lg"
                         height="400"
-                        src={image}
+                        src={images.philanthropic[index]}
                         style={{
                           aspectRatio: "600/400",
                           objectFit: "cover",
@@ -243,7 +249,7 @@ const Search = () => {
           {formData.financial?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Financial</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.map((cause) => {
+              {data.map((cause, index) => {
                 if (cause.category == "financial") {
                   return (
                     <div className=" shadow-md p-5 rounded">
@@ -251,7 +257,7 @@ const Search = () => {
                         alt="Sports Story Image"
                         className="w-full object-cover object-center rounded-lg"
                         height="400"
-                        src={image}
+                        src={images.financial[index]}
                         style={{
                           aspectRatio: "600/400",
                           objectFit: "cover",
@@ -269,12 +275,11 @@ const Search = () => {
                       <p className="text-zinc-500 dark:text-zinc-400">
                         {cause.description}
                       </p>
-                      <Link
-                        className="text-blue-500 hover:text-blue-700 mt-4"
-                        href="#"
-                      >
-                        Read More
-                      </Link>
+                      <div>
+                        <Link href="#" className="text-blue-500 hover:text-blue-700 mt-4 border py-2 px-5 rounded-xl relative left-64">
+                          DONATE
+                        </Link>
+                      </div>
                     </div>
                   );
                 }
