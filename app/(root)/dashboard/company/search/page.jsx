@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import filter from "./../../../public/filter.svg";
+import filter from "./../../../dashboard/company/search/filters";
 import Image from "next/image";
 import Autocomplete from "react-select";
 import { useState, useEffect } from "react";

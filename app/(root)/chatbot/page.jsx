@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
@@ -34,6 +35,23 @@ const Chat = () => {
     <>
       <div className="flex flex-col h-screen">
         <header className="flex items-center justify-between p-4 border-b">
+        <Link href={"/dashboard/company"}>
+            <svg
+              class="w-8 h-8 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h14M5 12l4-4m-4 4 4 4"
+              />
+            </svg>
+          </Link>
           <h2 className="text-xl font-bold">Chatbot</h2>
         </header>
         <main className="flex-1 overflow-y-auto p-4 space-y-4">

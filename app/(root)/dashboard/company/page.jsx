@@ -24,15 +24,15 @@ const Dashboard = () => {
                 router.push("/");
               }}
             >
-                      <svg
-              class="w-6 h-6 text-black"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M11 21V2.4a3.5 3.5 0 0 0-4.8 1.8A3.5 3.5 0 0 0 4 8l-.7 1.1-.1.4-.1.3a3.5 3.5 0 0 0 0 1.5A3.9 3.9 0 0 0 2 14v.9l.2.6a3.8 3.8 0 0 0 1 1.4 4 4 0 0 0 .6.5v.1A3.5 3.5 0 0 0 7 21a3.4 3.4 0 0 0 4.2.5 1 1 0 0 1-.2-.5Zm11-7.7v-.1a4 4 0 0 0-1-2 3.4 3.4 0 0 0-.2-1.7V9c-.3-.4-.5-.8-.8-1a3.4 3.4 0 0 0-.6-2.6 4 4 0 0 0-1.6-1.3A3.5 3.5 0 0 0 13 2.4V21c0 .2 0 .4-.2.5A3.4 3.4 0 0 0 17 21a3.5 3.5 0 0 0 3-3.5 5.4 5.4 0 0 0 .7-.5 4.2 4.2 0 0 0 .7-.9l.3-.5.2-.7v-.2a4 4 0 0 0 0-1.4Z" />
-            </svg>  
+              <svg
+                class="w-6 h-6 text-black"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M11 21V2.4a3.5 3.5 0 0 0-4.8 1.8A3.5 3.5 0 0 0 4 8l-.7 1.1-.1.4-.1.3a3.5 3.5 0 0 0 0 1.5A3.9 3.9 0 0 0 2 14v.9l.2.6a3.8 3.8 0 0 0 1 1.4 4 4 0 0 0 .6.5v.1A3.5 3.5 0 0 0 7 21a3.4 3.4 0 0 0 4.2.5 1 1 0 0 1-.2-.5Zm11-7.7v-.1a4 4 0 0 0-1-2 3.4 3.4 0 0 0-.2-1.7V9c-.3-.4-.5-.8-.8-1a3.4 3.4 0 0 0-.6-2.6 4 4 0 0 0-1.6-1.3A3.5 3.5 0 0 0 13 2.4V21c0 .2 0 .4-.2.5A3.4 3.4 0 0 0 17 21a3.5 3.5 0 0 0 3-3.5 5.4 5.4 0 0 0 .7-.5 4.2 4.2 0 0 0 .7-.9l.3-.5.2-.7v-.2a4 4 0 0 0 0-1.4Z" />
+              </svg>
               <span className="">SocialSprint</span>
             </a>
             <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:textAccent-foreground ml-auto h-8 w-8">
@@ -80,7 +80,7 @@ const Dashboard = () => {
 
               <Link
                 className="flex items-center gap-5 rounded-lg px-3 py-2  text-gray-900  transition-all hover:text-gray-900"
-                href={"/search"}
+                href={"/dashboard/company/search"}
               >
                 <svg
                   className="w-5 h-5 text-gray-800 dark:text-white"
@@ -141,7 +141,7 @@ const Dashboard = () => {
               </Link>
               <Link
                 className="flex items-center gap-5 rounded-lg px-3 py-2  text-gray-900  transition-all hover:text-gray-900"
-                href={"/dashboard/company"}
+                href={"/dashboard/company/impact"}
               >
                 <svg
                   className="w-5 h-5 text-gray-800 dark:text-white"
@@ -159,6 +159,26 @@ const Dashboard = () => {
                   />
                 </svg>
                 Impact
+              </Link>
+              <Link
+                className="flex items-center gap-5 rounded-lg px-3 py-2  text-gray-900  transition-all hover:text-gray-900"
+                href={"/chatbot"}
+              >
+                <svg
+                  className="w-5 h-5 text-gray-800 "
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeWidth="2"
+                    d="m3.5 5.5 7.9 6c.4.3.8.3 1.2 0l7.9-6M4 19h16c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1H4a1 1 0 0 0-1 1v12c0 .6.4 1 1 1Z"
+                  />
+                </svg>
+                Chatbot
               </Link>
             </nav>
           </div>

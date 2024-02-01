@@ -81,7 +81,7 @@ const MentorProfile = () => {
           <div className="flex items-center justify-center lg:block h-48 w-full overflow-hidden rounded-lg shadow-md bg-white ">
             <Image
               src={amul}
-              alt="Mentor's avatar"
+              alt="avatar"
               className="h-full w-full object-contain"
             />
           </div>

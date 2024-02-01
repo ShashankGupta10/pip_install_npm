@@ -7,24 +7,25 @@ const page = () => {
   return (
     <>
       <div class="flex justify-center items-center h-16">
-      <div className="px-10">
-    <Link href={'/dashboard/ngo'}>
-      <svg
-        class="w-8 h-8 text-gray-800 dark:text-white"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 12h14M5 12l4-4m-4 4 4 4"
-        />
-      </svg>
-    </Link></div>
+        <div className="px-10">
+          <Link href={"/dashboard/ngo"}>
+            <svg
+              class="w-8 h-8 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h14M5 12l4-4m-4 4 4 4"
+              />
+            </svg>
+          </Link>
+        </div>
         <h1 class="text-3xl font-bold">Raise Issue Form</h1>
       </div>
       <br></br>
@@ -105,9 +106,7 @@ const page = () => {
             </div>
             <div className="flex-1 flex justify-end items-end space-y-6">
               <div className="flex justify-center">
-                <button
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm px-3 py-2  text-white bg-gray-600"
-                >
+                <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm px-3 py-2  text-white bg-gray-600">
                   Submit
                 </button>
               </div>

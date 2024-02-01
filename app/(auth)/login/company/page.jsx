@@ -11,7 +11,7 @@ const Login = () => {
     const password = formData.get("password");
     const company = await Company.findOne({ email });
     if (company && company.password === password) {
-      redirect("/dashboard");
+      redirect("/dashboard/company");
     } else {
       console.log("Invalid password");
     }
