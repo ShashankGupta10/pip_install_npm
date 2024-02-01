@@ -49,6 +49,7 @@ const Search = () => {
   const search_func = async () => {
     axios.post("/api/search", { search }).then((res) => {
       setData(res.data);
+      console.log(data)
     });
   };
 

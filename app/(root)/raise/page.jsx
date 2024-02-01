@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import photo from "../../../public/camera.jpg";
+import photo from "../../../public/camera.webp";
 import Link from "next/link";
 
 const page = () => {
@@ -131,9 +131,7 @@ const page = () => {
             src={photo}
             alt="Placeholder"
             className="w-full h-64 object-cover rounded-md"
-            width="200"
-            height="200"
-            style={{ aspectRatio: 200 / 200, objectFit: "cover" }}
+            style={{ objectFit: "contain", scale: "1.1" }}
           />
         </div>
       </div>
