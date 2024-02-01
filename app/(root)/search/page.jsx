@@ -12,13 +12,15 @@ import axios from "axios";
 export const FilterContext = createContext();
 
 const Search = () => {
-  const [data, setData] = useState([{
-    category: "",
-    title: "",
-    description: "",
-    image: "",
-    location: "",
-  }]);
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState([
+    {
+      category: "",
+      title: "",
+      description: "",
+      location: "",
+    },
+  ]);
   const [filterActive, setFilterActive] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -29,16 +31,17 @@ const Search = () => {
   });
 
   const options = [
-    { value: "a", label: "Bandra" },
-    { value: "b", label: "Khar" },
-    { value: "c", label: "Thane" },
-    { value: "d", label: "Goregaon" },
-    { value: "e", label: "Andheri" },
+    { value: "bandra", label: "Bandra" },
+    { value: "khar", label: "Khar" },
+    { value: "thane", label: "Thane" },
+    { value: "goregaon", label: "Goregaon" },
+    { value: "andheri", label: "Andheri" },
   ];
 
-  const search_func = async (formData) => {
-    const search = formData.get("search");
-    console.log(search);
+  const search_func = async () => {
+    axios.post("/api/search", { search }).then((res) => {
+      setData(res.data);
+    });
   };
 
   const handleFilter = async (e) => {
@@ -47,13 +50,19 @@ const Search = () => {
   };
 
   useEffect(() => {
-    axios.post("/api/search", {
-      search: "all"
-    }).then((res) => {
-      console.log(res.data)
-      setData(res.data);
-    })
+    axios
+      .post("/api/search", {
+        search: "all",
+      })
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      });
   }, []);
+
+  const handleChange = (e) => {
+    setSearch(e);
+  }
 
   return (
     <FilterContext.Provider
@@ -62,7 +71,7 @@ const Search = () => {
       {filterActive ? <Filters /> : null}
       <section className="w-full">
         <div className="flex justify-center gap-5">
-          <form action={search_func} className="">
+          <form onSubmit={search_func} className="">
             <div className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,8 +89,11 @@ const Search = () => {
                 <path d="m21 21-4.3-4.3"></path>
               </svg>
               <Autocomplete
+                onKeyDown={search_func}
+                onInputChange={handleChange}
                 options={options}
                 className="text-sm ring-offset-background w-[600px]"
+                value={search}
               />
             </div>
           </form>
@@ -102,453 +114,173 @@ const Search = () => {
           </div>
         </div>
         <main className="container mx-auto px-4 md:px-6 py-8">
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Top Story</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <Image
-                  alt="Top Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-              </div>
-              <div className="flex flex-col justify-center">
-                <h3 className="text-xl font-bold mb-2">Top Story Headline</h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the top story. Click the link to
-                  read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-            </div>
-          </section>
-          <section className="mb-8">
+          {formData.environmental?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Environmental</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <Image
-                  alt="Politics Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Politics Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the politics story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Politics Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Politics Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the politics story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Politics Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Politics Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the politics story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
+              {data.map((cause) => {
+                if (cause.category == "environmental") {
+                  return (
+                    <div>
+                      <Image
+                        alt="Politics Story Image"
+                        className="w-full h-64 object-cover object-center rounded-lg"
+                        height="400"
+                        src={image}
+                        style={{
+                          aspectRatio: "600/400",
+                          objectFit: "cover",
+                        }}
+                        width="600"
+                      />
+                      <div className="flex justify-between">
+                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
+                          {cause.title}
+                        </h3>
+                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
+                          {cause.location}
+                        </p>
+                      </div>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        This is a brief summary of the politics story. Click the
+                        link to read more.
+                      </p>
+                      <Link
+                        className="text-blue-500 hover:text-blue-700 mt-4"
+                        href="#"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  );
+                }
+              })}
             </div>
-          </section>
-          <section className="mb-8">
+          </section>:null}
+          {formData.ethical?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Ethical</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <Image
-                  alt="Business Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Business Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the business story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Business Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Business Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the business story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Business Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Business Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the business story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
+              {data.map((cause) => {
+                if (cause.category == "ethical") {
+                  return (
+                    <div>
+                      <Image
+                        alt="Business Story Image"
+                        className="w-full h-64 object-cover object-center rounded-lg"
+                        height="400"
+                        src={image}
+                        style={{
+                          aspectRatio: "600/400",
+                          objectFit: "cover",
+                        }}
+                        width="600"
+                      />
+                      <div className="flex justify-between">
+                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
+                          {cause.title}
+                        </h3>
+                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
+                          {cause.location}
+                        </p>
+                      </div>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        This is a brief summary of the business story. Click the
+                        link to read more.
+                      </p>
+                      <Link
+                        className="text-blue-500 hover:text-blue-700 mt-4"
+                        href="#"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  );
+                }
+              })}
             </div>
-          </section>
-          <section className="mb-8">
+          </section>: null}
+          {formData.philanthropic?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Philanthropic</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <Image
-                  alt="Tech Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Tech Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the tech story. Click the link to
-                  read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Tech Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Tech Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the tech story. Click the link to
-                  read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Tech Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Tech Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the tech story. Click the link to
-                  read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
+              {data.map((cause) => {
+                if (cause.category == "philanthropic") {
+                  return (
+                    <div>
+                      <Image
+                        alt="Tech Story Image"
+                        className="w-full h-64 object-cover object-center rounded-lg"
+                        height="400"
+                        src={image}
+                        style={{
+                          aspectRatio: "600/400",
+                          objectFit: "cover",
+                        }}
+                        width="600"
+                      />
+                      <div className="flex justify-between">
+                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
+                          {cause.title}
+                        </h3>
+                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
+                          {cause.location}
+                        </p>
+                      </div>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        This is a brief summary of the tech story. Click the
+                        link to read more.
+                      </p>
+                      <Link
+                        className="text-blue-500 hover:text-blue-700 mt-4"
+                        href="#"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  );
+                }
+              })}
             </div>
-          </section>
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Culture</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <Image
-                  alt="Culture Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  Sport
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Culture Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the culture story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Culture Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Culture Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the culture story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Culture Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Culture Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the culture story. Click the link
-                  to read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-            </div>
-          </section>
-          <section className="mb-8">
+          </section>: null}
+          {formData.financial?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Financial</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <Image
-                  alt="Sports Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Sports Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the sports story. Click the link to
-                  read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Sports Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Sports Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the sports story. Click the link to
-                  read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
-              <div>
-                <Image
-                  alt="Sports Story Image"
-                  className="w-full h-64 object-cover object-center rounded-lg"
-                  height="400"
-                  src={image}
-                  style={{
-                    aspectRatio: "600/400",
-                    objectFit: "cover",
-                  }}
-                  width="600"
-                />
-                <h3 className="text-xl font-bold mb-2 mt-4">
-                  Sports Story Headline
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  This is a brief summary of the sports story. Click the link to
-                  read more.
-                </p>
-                <Link
-                  className="text-blue-500 hover:text-blue-700 mt-4"
-                  href="#"
-                >
-                  Read More
-                </Link>
-              </div>
+              {data.map((cause) => {
+                if (cause.category == "financial") {
+                  return (
+                    <div className=" shadow-md p-5 rounded">
+                      <Image
+                        alt="Sports Story Image"
+                        className="w-full object-cover object-center rounded-lg"
+                        height="400"
+                        src={image}
+                        style={{
+                          aspectRatio: "600/400",
+                          objectFit: "cover",
+                        }}
+                        width="600"
+                      />
+                      <div className="flex justify-between">
+                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
+                          {cause.title}
+                        </h3>
+                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
+                          {cause.location}
+                        </p>
+                      </div>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {cause.description}
+                      </p>
+                      <Link
+                        className="text-blue-500 hover:text-blue-700 mt-4"
+                        href="#"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  );
+                }
+              })}
             </div>
-          </section>
+          </section>: null}
         </main>
       </section>
     </FilterContext.Provider>

@@ -94,7 +94,7 @@ const Filters = () => {
                   <input
                     id="Branded"
                     type="checkbox"
-                    name="type[Branded]"
+                    name="financial"
                     onChange={handleChange}
                     class="h-5 w-5 rounded border-gray-300"
                     checked={formData.financial}
