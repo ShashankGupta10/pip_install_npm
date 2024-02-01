@@ -3,8 +3,25 @@ import one from "./../../../../public/1.png";
 import { IoMdArrowBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import amul from "./../../../../public/amul.png";
 
 const MentorProfile = () => {
+  const handleDownload = () => {
+    const downloadUrl = '/company/csr.pdf';
+        window.open(downloadUrl, '_blank');
+  };
+  const download = () => {
+    const fileUrl = "./csr.pdf";
+    const link = document.createElement("a");
+    link.href = fileUrl;
+    link.setAttribute("download", "downloaded-file.pdf");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const fileUrl = "csr.pdf";
+  const filename = "File.pdf";
   const router = useRouter();
 
   const plans = [
@@ -63,9 +80,9 @@ const MentorProfile = () => {
         <div className="lg:col-span-1">
           <div className="flex items-center justify-center lg:block h-48 w-full overflow-hidden rounded-lg shadow-md bg-white ">
             <Image
-              src={one}
+              src={amul}
               alt="Mentor's avatar"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
             />
           </div>
           <div className="mt-6 flex items-center justify-center space-x-2">
@@ -144,27 +161,29 @@ const MentorProfile = () => {
             4 average rating
           </div>
           <div className="mt-6">
-            <h2 className="text-center text-2xl font-bold">John Doe</h2>
+            <h2 className="text-center text-2xl font-bold">
+              Tribhuvandas Patel
+            </h2>
             <p className="mt-2 text-center text-sm text-gray-500 ">
-              Senior Software Engineer at Acme Inc.
+              Founder of Amul.
             </p>
           </div>
           <div className="flex justify-center">
             <button
               className="px-4 py-2 mt-4 text-white bg-black rounded-lg duration-150 hover:bg-gray-800 "
-              onClick={() => router.push("/freeTrial")}
+              onClick={handleDownload}
             >
-              Free trial
+              Generate CSR
             </button>
           </div>
-          <div>
+          {/* <div>
             <button
               className="px-4 py-2 mt-4 bg-white text-black rounded-lg duration-150 hover:bg-gray-800 "
               onClick={() => router.push("/freeTrial")}
             >
               Audio Call
             </button>
-          </div>
+          </div> */}
           <div className="mt-6">
             <h3 className="text-lg font-medium">Contact Information</h3>
             <dl className="mt-2 space-y-2">
@@ -186,7 +205,7 @@ const MentorProfile = () => {
                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </svg>
-                  john.doe@example.com
+                  amuldoodh@gmail.com
                 </dd>
               </div>
               <div>
@@ -206,7 +225,7 @@ const MentorProfile = () => {
                   >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
-                  +1 (555) 123-4567
+                  +91 86571 92360
                 </dd>
               </div>
             </dl>
@@ -214,9 +233,9 @@ const MentorProfile = () => {
           <div className="mt-6">
             <h3 className="text-lg font-medium">Areas of Expertise</h3>
             <ul className="mt-2 space-y-2">
-              <li className="text-sm text-gray-500 ">JavaScript</li>
-              <li className="text-sm text-gray-500 ">React</li>
-              <li className="text-sm text-gray-500 ">Node.js</li>
+              <li className="text-sm text-gray-500 ">Doodh</li>
+              <li className="text-sm text-gray-500 ">Dahi</li>
+              <li className="text-sm text-gray-500 ">Paneer</li>
             </ul>
           </div>
         </div>
@@ -224,36 +243,33 @@ const MentorProfile = () => {
           <div className="px-4 py-5 bg-white shadow rounded-lg ">
             <h2 className="text-xl font-bold">Bio</h2>
             <p className="mt-2 text-sm text-gray-500 ">
-              🚀 About Me:
-              <br /> I am a seasoned web development professional with a passion
-              for helping aspiring developers router.push the exciting and
-              ever-evolving world of web technologies. With over 10 years of
-              hands-on experience in the field, I have had the privilege of
-              working on diverse projects, ranging from dynamic web applications
-              to e-commerce platforms.
+              🚀 About:
+              <br /> Amul, an acronym for Anand Milk Union Limited, is a
+              cooperative dairy brand based in Anand, Gujarat, India. The brand
+              is managed by the Gujarat Co-operative Milk Marketing Federation
+              Ltd. (GCMMF), which is a cooperative organization formed by
+              various dairy cooperatives in Gujarat. Amul is one of the most
+              well-known and successful dairy cooperatives in the world.
               <br />
               <br /> 🌐 Expertise:
-              <br /> My expertise lies in front-end and back-end development,
-              where I have mastered technologies such as HTML, CSS, JavaScript,
-              React.js, Node.js, and more. I am well-versed in creating
-              responsive and user-friendly interfaces, as well as building
-              robust server-side applications.
+              <br /> Amul, a pioneer in the Indian dairy industry, has
+              cultivated expertise in the successful implementation of a
+              cooperative model, empowering farmers and ensuring a robust supply
+              chain. Known for its unwavering commitment to quality, Amul has
+              diversified its product portfolio and demonstrated innovation in
+              adapting to consumer preferences. The brand's iconic marketing
+              strategies, global expansion, and focus on community development
+              showcase its multifaceted expertise.
               <br />
               <br /> 🧑‍🏫 Mentoring Philosophy:
-              <br /> I believe in fostering a supportive learning environment
-              that empowers mentees to explore, experiment, and excel. My
-              mentoring philosophy revolves around a hands-on approach, where we
-              tackle real-world challenges together. I emphasize practical
-              skills, industry best practices, and staying abreast of the latest
-              trends to ensure mentees are well-prepared for the dynamic field
-              of web development.
-              <br />
-              <br /> 🎓 Education:
-              <br /> I hold a [Degree/Certification] in [Field of Study],
-              complemented by continuous learning and professional development.
-              I am committed to staying at the forefront of web development
-              trends and sharing this knowledge with those eager to embark on or
-              advance their journey in the tech industry.
+              <br /> Amul's philosophy revolves around fostering a cooperative
+              model that empowers dairy farmers and ensures a resilient supply
+              chain. Committed to unwavering quality and safety standards, Amul
+              embraces innovation, diversification, and global outreach,
+              showcasing a dynamic approach to consumer needs. Amul's philosophy
+              extends beyond commercial success, emphasizing community
+              development, sustainability, and a positive global impact, making
+              it a symbol of socio-economic progress in the dairy industry.
             </p>
           </div>
           <div className="mt-6 px-4 py-5 bg-white shadow rounded-lg ">
@@ -330,89 +346,11 @@ const MentorProfile = () => {
                 >
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
-                <div className="ml-2 text-sm text-gray-500 ">Jane Smith</div>
+                <div className="ml-2 text-sm text-gray-500 ">ChildCare NGO</div>
               </div>
               <p className="mt-2 text-sm text-gray-500 ">
-                John has been an amazing mentor. He's knowledgeable, patient,
-                and really takes the time to explain concepts. I've learned so
-                much from him!
-              </p>
-              <div className="flex items-start space-x-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="#facc15"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5 text-yellow-400"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="#facc15"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5 text-yellow-400"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="#facc15"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5 text-yellow-400"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="#facc15"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5 text-yellow-400"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="#facc15"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5 text-yellow-400"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                <div className="ml-2 text-sm text-gray-500 ">Bob Johnson</div>
-              </div>
-              <p className="mt-2 text-sm text-gray-500 ">
-                John is a fantastic mentor. He's always available to answer
-                questions and provide guidance. I highly recommend him!
+                AMUL has been an amazing spporter. They're knowledgeable,
+                patient, and really takes the effort to solve problems.
               </p>
             </div>
           </div>

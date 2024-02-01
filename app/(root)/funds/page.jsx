@@ -1,6 +1,6 @@
 // import { Button } from "@/components/ui/button"
-import chart1 from "../../../public/chart3.svg";
-import chart2 from "../../../public/chart2.svg";
+// import chart1 from "../../../public/chart3.svg";
+// import chart2 from "../../../public/chart2.svg";
 import child from "../../../public/childedu.jpg";
 import Image from "next/image";
 import { redirect } from "next/navigation";

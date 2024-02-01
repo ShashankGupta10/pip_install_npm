@@ -8,9 +8,11 @@ import { createContext } from "react";
 import Filters from "./filters.jsx";
 import axios from "axios";
 
+
 export const FilterContext = createContext();
 
 const Search = () => {
+
   const [search, setSearch] = useState("");
   const [data, setData] = useState([
     {
@@ -71,11 +73,31 @@ const Search = () => {
   }
 
   return (
+    <>
+    <div className="px-10">
+    <Link href={'/dashboard/company'}>
+      <svg
+        class="w-8 h-8 text-gray-800 dark:text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 12h14M5 12l4-4m-4 4 4 4"
+        />
+      </svg>
+    </Link></div>
     <FilterContext.Provider
       value={[handleFilter, setFilterActive, formData, setFormData]}
     >
       {filterActive ? <Filters /> : null}
       <section className="w-full">
+        
         <div className="flex justify-center gap-5">
           <form onSubmit={search_func} className="">
             <div className="relative">
@@ -276,7 +298,7 @@ const Search = () => {
                         {cause.description}
                       </p>
                       <div>
-                        <Link href="#" className="text-blue-500 hover:text-blue-700 mt-4 border py-2 px-5 rounded-xl relative left-64">
+                        <Link href="/funds" className="bg-gray-500 text-white  mt-4 border py-2 px-5 rounded-xl relative left-64">
                           DONATE
                         </Link>
                       </div>
@@ -288,7 +310,7 @@ const Search = () => {
           </section>: null}
         </main>
       </section>
-    </FilterContext.Provider>
+    </FilterContext.Provider></>
   );
 };
 export default Search;

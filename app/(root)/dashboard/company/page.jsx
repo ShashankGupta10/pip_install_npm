@@ -24,6 +24,15 @@ const Dashboard = () => {
                 router.push("/");
               }}
             >
+                      <svg
+              class="w-6 h-6 text-black"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M11 21V2.4a3.5 3.5 0 0 0-4.8 1.8A3.5 3.5 0 0 0 4 8l-.7 1.1-.1.4-.1.3a3.5 3.5 0 0 0 0 1.5A3.9 3.9 0 0 0 2 14v.9l.2.6a3.8 3.8 0 0 0 1 1.4 4 4 0 0 0 .6.5v.1A3.5 3.5 0 0 0 7 21a3.4 3.4 0 0 0 4.2.5 1 1 0 0 1-.2-.5Zm11-7.7v-.1a4 4 0 0 0-1-2 3.4 3.4 0 0 0-.2-1.7V9c-.3-.4-.5-.8-.8-1a3.4 3.4 0 0 0-.6-2.6 4 4 0 0 0-1.6-1.3A3.5 3.5 0 0 0 13 2.4V21c0 .2 0 .4-.2.5A3.4 3.4 0 0 0 17 21a3.5 3.5 0 0 0 3-3.5 5.4 5.4 0 0 0 .7-.5 4.2 4.2 0 0 0 .7-.9l.3-.5.2-.7v-.2a4 4 0 0 0 0-1.4Z" />
+            </svg>  
               <span className="">SocialSprint</span>
             </a>
             <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:textAccent-foreground ml-auto h-8 w-8">
@@ -298,7 +307,7 @@ const Dashboard = () => {
                     Total Donations
                   </p>
                   <h3 className="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">
-                    120
+                    5
                   </h3>
                 </div>
                 <div className="p-6">
@@ -322,7 +331,7 @@ const Dashboard = () => {
                 <div className="flex flex-col space-y-1.5 p-6">
                   <p className="text-sm text-muted-foreground">Visits</p>
                   <h3 className="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">
-                    345
+                    57
                   </h3>
                 </div>
                 <div className="p-6">
@@ -417,7 +426,7 @@ const Dashboard = () => {
                           connectfor@example.com
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          40
+                          3
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
                           September 30, 2023
@@ -444,7 +453,7 @@ const Dashboard = () => {
                           educateus@example.com
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          60
+                          1
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
                           December 28, 2023
@@ -471,7 +480,7 @@ const Dashboard = () => {
                           muskarateraho@example.com
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
-                          20
+                          1
                         </td>
                         <td className="py-4 px-6 border-b border-grey-light">
                           June 30, 2023

@@ -17,14 +17,26 @@ const Signup = async () => {
     <main className="w-full flex">
       <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
         <div className="relative z-10 w-full max-w-md">
-          logo
+          <div className="flex gap-6">
+            <svg
+              class="w-8 h-8 text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M11 21V2.4a3.5 3.5 0 0 0-4.8 1.8A3.5 3.5 0 0 0 4 8l-.7 1.1-.1.4-.1.3a3.5 3.5 0 0 0 0 1.5A3.9 3.9 0 0 0 2 14v.9l.2.6a3.8 3.8 0 0 0 1 1.4 4 4 0 0 0 .6.5v.1A3.5 3.5 0 0 0 7 21a3.4 3.4 0 0 0 4.2.5 1 1 0 0 1-.2-.5Zm11-7.7v-.1a4 4 0 0 0-1-2 3.4 3.4 0 0 0-.2-1.7V9c-.3-.4-.5-.8-.8-1a3.4 3.4 0 0 0-.6-2.6 4 4 0 0 0-1.6-1.3A3.5 3.5 0 0 0 13 2.4V21c0 .2 0 .4-.2.5A3.4 3.4 0 0 0 17 21a3.5 3.5 0 0 0 3-3.5 5.4 5.4 0 0 0 .7-.5 4.2 4.2 0 0 0 .7-.9l.3-.5.2-.7v-.2a4 4 0 0 0 0-1.4Z" />
+            </svg>
+            <p className="text-white font-bold text-3xl">Social Sprints</p>
+          </div>
+
           <div className=" mt-16 space-y-3">
             <h3 className="text-white text-3xl font-bold">
-              Start growing your business quickly
+              Making a Difference, One Action at a Time.
             </h3>
             <p className="text-gray-300">
-              Create an account and get access to all features for 30-days, No
-              credit card required.
+              Join us in making a difference, no commitment required, just
+              impact.
             </p>
             <div className="flex items-center -space-x-2 overflow-hidden">
               <img
