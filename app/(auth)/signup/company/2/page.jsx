@@ -23,8 +23,8 @@ const page = async () => {
       turnover: turnover,
       mission: mission,
     });
-
-    return { message: "Company created successfully" };
+    redirect("/login/company");
+    // return { message: "Company created successfully" };
     // console.log(name, email, password);
     // await Company.create({ name: name, email: email, password: password });
     // return { message: "Company created successfully" };
