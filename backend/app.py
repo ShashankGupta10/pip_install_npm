@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from langchain.text_splitter import CharacterTextSplitter
@@ -6,7 +7,9 @@ from langchain.embeddings.cohere import CohereEmbeddings
 from langchain.llms.cohere import Cohere
 from PyPDF2 import PdfReader
 from langchain.chains import RetrievalQA
-import os
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 app = Flask(__name__)
 CORS(app)
@@ -51,7 +54,7 @@ def chat():
         llm=llm,
     )
     answer = chain.invoke({"query": question})
-    return jsonify({"answer": answer})
+    return jsonify({"answer": answer['result']})
 
 
 if __name__ == "__main__":
