@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import filter from "./../../../dashboard/company/search/filters";
+import filter from "@/public/filter.svg";
 import Image from "next/image";
 import Autocomplete from "react-select";
 import { useState, useEffect } from "react";
@@ -142,133 +142,7 @@ const Search = () => {
           </div>
         </div>
         <main className="container mx-auto px-4 md:px-6 py-8">
-          {formData.environmental?<section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Environmental</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.map((cause, index) => {
-                if (cause.category == "environmental") {
-                  return (
-                    <div>
-                      <Image
-                        alt="Politics Story Image"
-                        className="w-full h-64 object-cover object-center rounded-lg"
-                        height="400"
-                        src={images.environmental[index]}
-                        style={{
-                          aspectRatio: "600/400",
-                          objectFit: "cover",
-                        }}
-                        width="600"
-                      />
-                      <div className="flex justify-between">
-                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
-                          {cause.title}
-                        </h3>
-                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
-                          {cause.location}
-                        </p>
-                      </div>
-                      <p className="text-zinc-500 dark:text-zinc-400">
-                        This is a brief summary of the politics story. Click the
-                        link to read more.
-                      </p>
-                      <Link
-                        className="text-blue-500 hover:text-blue-700 mt-4"
-                        href="#"
-                      >
-                        Read More
-                      </Link>
-                    </div>
-                  );
-                }
-              })}
-            </div>
-          </section>:null}
-          {formData.ethical?<section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Ethical</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.map((cause, index) => {
-                if (cause.category == "ethical") {
-                  return (
-                    <div>
-                      <Image
-                        alt="Business Story Image"
-                        className="w-full h-64 object-cover object-center rounded-lg"
-                        height="400"
-                        src={images.ethical[index]}
-                        style={{
-                          aspectRatio: "600/400",
-                          objectFit: "cover",
-                        }}
-                        width="600"
-                      />
-                      <div className="flex justify-between">
-                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
-                          {cause.title}
-                        </h3>
-                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
-                          {cause.location}
-                        </p>
-                      </div>
-                      <p className="text-zinc-500 dark:text-zinc-400">
-                        This is a brief summary of the business story. Click the
-                        link to read more.
-                      </p>
-                      <Link
-                        className="text-blue-500 hover:text-blue-700 mt-4"
-                        href="#"
-                      >
-                        Read More
-                      </Link>
-                    </div>
-                  );
-                }
-              })}
-            </div>
-          </section>: null}
-          {formData.philanthropic?<section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Philanthropic</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.map((cause, index) => {
-                if (cause.category == "philanthropic") {
-                  return (
-                    <div>
-                      <Image
-                        alt="Tech Story Image"
-                        className="w-full h-64 object-cover object-center rounded-lg"
-                        height="400"
-                        src={images.philanthropic[index]}
-                        style={{
-                          aspectRatio: "600/400",
-                          objectFit: "cover",
-                        }}
-                        width="600"
-                      />
-                      <div className="flex justify-between">
-                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
-                          {cause.title}
-                        </h3>
-                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
-                          {cause.location}
-                        </p>
-                      </div>
-                      <p className="text-zinc-500 dark:text-zinc-400">
-                        This is a brief summary of the tech story. Click the
-                        link to read more.
-                      </p>
-                      <Link
-                        className="text-blue-500 hover:text-blue-700 mt-4"
-                        href="#"
-                      >
-                        Read More
-                      </Link>
-                    </div>
-                  );
-                }
-              })}
-            </div>
-          </section>: null}
-          {formData.financial?<section className="mb-8">
+        {formData.financial?<section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Financial</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {data.map((cause, index) => {
@@ -279,7 +153,7 @@ const Search = () => {
                         alt="Sports Story Image"
                         className="w-full object-cover object-center rounded-lg"
                         height="400"
-                        src={images.financial[index]}
+                        src={images.financial[index%3]}
                         style={{
                           aspectRatio: "600/400",
                           objectFit: "cover",
@@ -308,6 +182,127 @@ const Search = () => {
               })}
             </div>
           </section>: null}
+          {formData.environmental?<section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Environmental</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {data.map((cause, index) => {
+                if (cause.category == "environmental") {
+                  return (
+                    <div>
+                      <Image
+                        alt="Politics Story Image"
+                        className="w-full h-64 object-cover object-center rounded-lg"
+                        height="400"
+                        src={images.environmental[index%3]}
+                        style={{
+                          aspectRatio: "600/400",
+                          objectFit: "cover",
+                        }}
+                        width="600"
+                      />
+                      <div className="flex justify-between">
+                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
+                          {cause.title}
+                        </h3>
+                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
+                          {cause.location}
+                        </p>
+                      </div>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {cause.description}
+                      </p>
+                      <div>
+                        <Link href="/funds" className="bg-gray-500 text-white  mt-4 border py-2 px-5 rounded-xl relative left-64">
+                          DONATE
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </section>:null}
+          {formData.ethical?<section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Ethical</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {data.map((cause, index) => {
+                if (cause.category == "ethical") {
+                  return (
+                    <div>
+                      <Image
+                        alt="Business Story Image"
+                        className="w-full h-64 object-cover object-center rounded-lg"
+                        height="400"
+                        src={images.ethical[index%3]}
+                        style={{
+                          aspectRatio: "600/400",
+                          objectFit: "cover",
+                        }}
+                        width="600"
+                      />
+                      <div className="flex justify-between">
+                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
+                          {cause.title}
+                        </h3>
+                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
+                          {cause.location}
+                        </p>
+                      </div>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {cause.description}
+                      </p>
+                      <div>
+                        <Link href="/funds" className="bg-gray-500 text-white  mt-4 border py-2 px-5 rounded-xl relative left-64">
+                          DONATE
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </section>: null}
+          {formData.philanthropic?<section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Philanthropic</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {data.map((cause, index) => {
+                if (cause.category == "philanthropy") {
+                  return (
+                    <div>
+                      <Image
+                        alt="Tech Story Image"
+                        className="w-full h-64 object-cover object-center rounded-lg"
+                        height="400"
+                        src={images.philanthropic[index%3]}
+                        style={{
+                          aspectRatio: "600/400",
+                          objectFit: "cover",
+                        }}
+                        width="600"
+                      />
+                      <div className="flex justify-between">
+                        <h3 className="text-xl font-bold mb-2 mt-4 inline">
+                          {cause.title}
+                        </h3>
+                        <p className="font-normal text-sm capitalize pt-5 opacity-25">
+                          {cause.location}
+                        </p>
+                      </div>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {cause.description}
+                      </p>
+                      <div>
+                        <Link href="/funds" className="bg-gray-500 text-white  mt-4 border py-2 px-5 rounded-xl relative left-64">
+                          DONATE
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </section>: null}
+          
         </main>
       </section>
     </FilterContext.Provider></>

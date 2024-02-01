@@ -126,20 +126,6 @@ const Filters = () => {
                     Distance
                   </label>
                 </div>
-
-                <div class="flex items-center">
-                  <input
-                    id="1500+"
-                    type="radio"
-                    name="Price"
-                    value="1500+"
-                    class="h-5 w-5 rounded border-gray-300"
-                  />
-
-                  <label for="1500+" class="ml-3 text-sm font-medium">
-                    1500
-                  </label>
-                </div>
               </div>
             </fieldset>
           </div>
